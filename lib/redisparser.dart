@@ -91,8 +91,7 @@ class RedisParser {
         return null;
       if (i >= 0) {
         //i of bulk data
-        return s.take_n(i).then((lst) => takeCRLF(
-            s, UTF8.decode(lst))); //consume CRLF and return decoded list
+        return s.take_n(i).then((lst) => takeCRLF(s, lst)); //consume CRLF and return decoded list
       } else {
         return Future.error(
             RedisRuntimeError("cant process buld data less than -1"));
