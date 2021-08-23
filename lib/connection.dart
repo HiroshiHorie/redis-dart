@@ -11,6 +11,7 @@ part of redis;
 
 /// Class for server connection on server
 class RedisConnection {
+  //
   Socket? _socket;
   LazyStream? _stream;
   Future _future = Future.value();
@@ -45,9 +46,9 @@ class RedisConnection {
   }
 
   /// close connection to Redis server
-  Future close() {
-    _stream!.close();
-    return _socket!.close();
+  Future<void> close() async {
+    _stream?.close();
+    _socket?.close();
   }
 
   //this doesnt send anything
